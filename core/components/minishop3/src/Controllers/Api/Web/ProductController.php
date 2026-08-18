@@ -29,6 +29,8 @@ class ProductController
     /**
      * GET /api/v1/product/get/{id}
      *
+     * Query: context, include_seo (default 1).
+     *
      * @param array<string, mixed> $params
      */
     public function get(array $params = []): Response
