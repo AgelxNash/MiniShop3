@@ -899,7 +899,7 @@ onMounted(() => {
 
 <style scoped>
 .extra-fields-manager {
-  padding: 1rem;
+  padding: 0;
 }
 </style>
 
