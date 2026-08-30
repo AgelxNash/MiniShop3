@@ -37,10 +37,10 @@ if (in_array('/api/v1/cart/get', $publicRoutes, true)) {
 
 foreach (
     [
-        '/api/v1/product/get/',
+        '/api/v1/product/get',
         '/api/v1/product/list',
         '/api/v1/product/filters',
-        '/api/v1/category/get/',
+        '/api/v1/category/get',
         '/api/v1/category/list',
         '/api/v1/category/tree',
         '/api/v1/delivery/get/',
@@ -95,6 +95,13 @@ if (
 
 if (!str_contains($middlewareSrc, 'ApiErrorCode::INTERNAL_ERROR')) {
     $fail('TokenMiddleware mint failure must use internal_error (not token_required)');
+}
+
+if (
+    !str_contains($middlewareSrc, '$route === $publicRoute')
+    || !str_contains($middlewareSrc, "str_starts_with(\$route, \$publicRoute . '/')")
+) {
+    $fail('isPublicRoute must match exact path or segment prefix, not blind str_starts_with');
 }
 
 if (
